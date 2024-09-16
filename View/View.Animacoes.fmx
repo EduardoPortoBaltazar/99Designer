@@ -1,0 +1,136 @@
+object List: TList
+  Left = 0
+  Top = 0
+  Caption = 'View.Arc2'
+  ClientHeight = 621
+  ClientWidth = 363
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Rectangle1: TRectangle
+    Position.X = 24.000000000000000000
+    Position.Y = 24.000000000000000000
+    Size.Width = 73.000000000000000000
+    Size.Height = 73.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Rectangle2: TRectangle
+    Position.X = 128.000000000000000000
+    Position.Y = 24.000000000000000000
+    Size.Width = 73.000000000000000000
+    Size.Height = 73.000000000000000000
+    Size.PlatformDefault = False
+    object Rectangle3: TRectangle
+      Position.X = -104.000000000000000000
+      Position.Y = 104.000000000000000000
+      Size.Width = 73.000000000000000000
+      Size.Height = 73.000000000000000000
+      Size.PlatformDefault = False
+      object Rectangle4: TRectangle
+        Position.X = 184.000000000000000000
+        Position.Y = 206.000000000000000000
+        Size.Width = 73.000000000000000000
+        Size.Height = 73.000000000000000000
+        Size.PlatformDefault = False
+        object FloatAnimation1: TFloatAnimation
+          Duration = 3.000000000000000000
+          OnFinish = FloatAnimation1Finish
+          PropertyName = 'Opacity'
+          StartValue = 1.000000000000000000
+          StopValue = 0.000000000000000000
+        end
+      end
+    end
+  end
+  object Rectangle5: TRectangle
+    Position.X = 128.000000000000000000
+    Position.Y = 128.000000000000000000
+    Size.Width = 73.000000000000000000
+    Size.Height = 81.000000000000000000
+    Size.PlatformDefault = False
+    object ColorAnimation1: TColorAnimation
+      Duration = 1.000000000000000000
+      Loop = True
+      PropertyName = 'Fill.Color'
+      StartValue = claWhite
+      StopValue = claBlack
+    end
+  end
+  object Button1: TButton
+    Position.X = 208.000000000000000000
+    Position.Y = 304.000000000000000000
+    TabOrder = 3
+    Text = 'Button1'
+    OnClick = Button1Click
+    object Button2: TButton
+      Position.X = -176.000000000000000000
+      TabOrder = 5
+      Text = 'Button2'
+      OnClick = Button2Click
+    end
+  end
+  object ColorAnimation2: TColorAnimation
+    Duration = 2.000000000000000000
+    PropertyName = 'Fill.Color'
+    StartValue = claWhite
+    StopValue = xFF0D0D0D
+  end
+  object Rectangle6: TRectangle
+    Position.X = 32.000000000000000000
+    Position.Y = 334.000000000000000000
+    Size.Width = 50.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object ListBox1: TListBox
+    Align = Bottom
+    Position.Y = 421.000000000000000000
+    Size.Width = 363.000000000000000000
+    Size.Height = 200.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 6
+    DisableFocusEffect = True
+    DefaultItemStyles.ItemStyle = ''
+    DefaultItemStyles.GroupHeaderStyle = ''
+    DefaultItemStyles.GroupFooterStyle = ''
+    Viewport.Width = 359.000000000000000000
+    Viewport.Height = 196.000000000000000000
+    object ListBoxItem1: TListBoxItem
+      TabOrder = 0
+      Text = 'ListBoxItem1'
+    end
+    object ListBoxItem2: TListBoxItem
+      Position.Y = 19.000000000000000000
+      TabOrder = 1
+      Text = 'ListBoxItem2'
+    end
+    object ListBoxItem3: TListBoxItem
+      Position.Y = 38.000000000000000000
+      TabOrder = 2
+      Text = 'ListBoxItem3'
+    end
+    object ListBoxItem4: TListBoxItem
+      Position.Y = 57.000000000000000000
+      TabOrder = 3
+      Text = 'ListBoxItem4'
+    end
+    object ListBoxItem5: TListBoxItem
+      Position.Y = 76.000000000000000000
+      TabOrder = 4
+      Text = 'ListBoxItem5'
+    end
+    object ListBoxItem6: TListBoxItem
+      Position.Y = 95.000000000000000000
+      TabOrder = 5
+      Text = 'ListBoxItem6'
+    end
+  end
+  object Button3: TButton
+    Position.X = 80.000000000000000000
+    Position.Y = 392.000000000000000000
+    TabOrder = 7
+    Text = 'Button3'
+    OnClick = Button3Click
+  end
+end
