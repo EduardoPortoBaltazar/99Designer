@@ -1,2 +1,0 @@
-# 99Designer
-Designer Delphi

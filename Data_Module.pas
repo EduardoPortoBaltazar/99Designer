@@ -1,4 +1,4 @@
-unit UDM_dados;
+unit Data_Module;
 
 interface
 
@@ -6,13 +6,15 @@ uses
   System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.SQLite,
-  FireDAC.Phys.SQLiteDef, FireDAC.Stan.ExprFuncs,
-  FireDAC.Phys.SQLiteWrapper.Stat, FireDAC.FMXUI.Wait, Data.DB,
-  FireDAC.Comp.Client;
+  FireDAC.Phys.SQLiteDef, FireDAC.Stan.ExprFuncs, FireDAC.FMXUI.Wait, Data.DB,
+  FireDAC.Comp.Client, System.IOUtils, FireDAC.Stan.Param, FireDAC.DatS,
+  FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet,
+  FireDAC.Phys.SQLiteWrapper.Stat;
 
 type
-  TDataModule2 = class(TDataModule)
-    Conn: TFDConnection;
+  Tdm = class(TDataModule)
+    conn: TFDConnection;
+    qry_geral: TFDQuery;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -21,7 +23,7 @@ type
   end;
 
 var
-  DataModule2: TDataModule2;
+  dm: Tdm;
 
 implementation
 
@@ -29,9 +31,9 @@ implementation
 
 {$R *.dfm}
 
-procedure TDataModule2.DataModuleCreate(Sender: TObject);
+procedure Tdm.DataModuleCreate(Sender: TObject);
 begin
-     with Conn do
+        with Conn do
         begin
                 {$IFDEF IOS}
                 Params.Values['DriverID'] := 'SQLite';
@@ -55,14 +57,13 @@ begin
 
                 {$IFDEF MSWINDOWS}
                 try
-                        Params.Values['Database'] := System.SysUtils.GetCurrentDir + '\banco.db';
+                        Params.Values['Database'] := System.SysUtils.GetCurrentDir + '\DB\banco.db';
                         Connected := true;
                 except on E:Exception do
                         raise Exception.Create('Erro de conexão com o banco de dados: ' + E.Message);
                 end;
                 {$ENDIF}
         end;
-
 end;
 
 end.
