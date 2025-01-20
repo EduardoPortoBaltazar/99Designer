@@ -19,6 +19,11 @@ type
     rectLoading: TRectangle;
     Arc1: TArc;
     FloatAnimation2: TFloatAnimation;
+    Button1: TButton;
+    Image1: TImage;
+    Rectangle1: TRectangle;
+    FloatAnimation1: TFloatAnimation;
+    Timer1: TTimer;
     procedure btn_refreshClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure ListViewUpdateObjects(const Sender: TObject;
@@ -28,6 +33,9 @@ type
     procedure ListViewDeletingItem(Sender: TObject; AIndex: Integer;
       var ACanDelete: Boolean);
     procedure ListViewPullRefresh(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure Image1Click(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
   private
     { Private declarations }
   public
@@ -39,9 +47,11 @@ var
 
 implementation
 
+uses
+  FListBox, Data_Module;
+
 {$R *.fmx}
 
-uses Data_Module;
 
 procedure Add_Tarefa(cod_tarefa : integer; descricao, categoria, status,
                      data_tarefa, hora : string; icone : TStream);
@@ -84,7 +94,7 @@ begin
       // Tarefa concluida...
 
       img := TListItemImage(Objects.FindDrawable('Image4'));
-      img.OwnsBitmap := true;
+      //img.OwnsBitmap := true;
       img.Bitmap := img_done.Bitmap;
 
       if status = 'F' then
@@ -94,7 +104,7 @@ begin
 
       // Icone detalhes...
       img := TListItemImage(Objects.FindDrawable('Image5'));
-      img.OwnsBitmap := true;
+      //img.OwnsBitmap := true;
       img.Bitmap := img_detalhe.Bitmap;
 
       //Botao concluido
@@ -146,6 +156,7 @@ begin
 
                   end);
                   qry_geral.next;
+                  icone.DisposeOf;
                 end;
             ListView.EndUpdate;
             FloatAnimation2.Stop;
@@ -157,11 +168,31 @@ begin
 
 end;
 
+procedure TFrm_Principal.Button1Click(Sender: TObject);
+begin
+  Application.CreateForm(TfrmListBox, frmListBox);
+  try
+    frmListBox.ShowModal;
+  finally
+    frmListBox.Free;
+  end;
+end;
+
 procedure TFrm_Principal.FormCreate(Sender: TObject);
 begin
   img_done.Visible := false;
   img_detalhe.Visible := false;
   ListView.DeleteButtonText:= 'Deletar';
+end;
+
+procedure TFrm_Principal.Image1Click(Sender: TObject);
+begin
+  if Image1.Width = 100 then
+    Image1.AnimateFloat('Width', 50, 0.2)
+  else
+  Image1.AnimateFloat('Width', 100, 0.2);
+
+
 end;
 
 procedure TFrm_Principal.ListViewDeletingItem(Sender: TObject; AIndex: Integer;
@@ -259,7 +290,7 @@ begin
 
                 // Icone...
                 img := TListItemImage(Objects.FindDrawable('Image3'));
-                img.OwnsBitmap := true;
+               // img.OwnsBitmap := true;
                 img.PlaceOffset.Y := 9;
                 img.Opacity := 0.8;
 
@@ -277,7 +308,7 @@ begin
 
                 // Tarefa concluida...
                 img := TListItemImage(Objects.FindDrawable('Image4'));
-                img.OwnsBitmap := true;
+                //img.OwnsBitmap := true;
                 img.PlaceOffset.Y := 9;
                 img.Opacity := 0.6;
                 img.Height := 14;
@@ -286,7 +317,7 @@ begin
 
                 // Icone detalhes...
                 img := TListItemImage(Objects.FindDrawable('Image5'));
-                img.OwnsBitmap := true;
+               // img.OwnsBitmap := true;
                 img.PlaceOffset.Y := 9;
                 img.Opacity := 0.4;
                 img.Height := 14;
@@ -304,6 +335,12 @@ begin
                txt.PlaceOffset.Y:= Height - 25;
 
         end;
+end;
+
+procedure TFrm_Principal.Timer1Timer(Sender: TObject);
+begin
+  Rectangle1.Position.X:= (Rectangle1.Position.X + 50);
+  Rectangle1.Position.Y:= (Rectangle1.Position.Y + 50);
 end;
 
 end.

@@ -1,0 +1,49 @@
+object frmListBox: TfrmListBox
+  Left = 0
+  Top = 0
+  Caption = 'ListBox'
+  ClientHeight = 480
+  ClientWidth = 316
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Rectangle1: TRectangle
+    Align = Top
+    Size.Width = 316.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Rectangle2: TRectangle
+    Align = Top
+    Position.Y = 50.000000000000000000
+    Size.Width = 316.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    object Button1: TButton
+      Align = Right
+      Position.X = 236.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'searchtoolbutton'
+      TabOrder = 0
+      Text = 'Button1'
+      OnClick = Button1Click
+    end
+  end
+  object ListBox: TListBox
+    Align = Client
+    Size.Width = 316.000000000000000000
+    Size.Height = 380.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'transparentlistboxstyle'
+    TabOrder = 2
+    DisableFocusEffect = True
+    DefaultItemStyles.ItemStyle = ''
+    DefaultItemStyles.GroupHeaderStyle = ''
+    DefaultItemStyles.GroupFooterStyle = ''
+    Viewport.Width = 316.000000000000000000
+    Viewport.Height = 380.000000000000000000
+  end
+end
